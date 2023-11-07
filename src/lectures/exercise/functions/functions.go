@@ -19,6 +19,31 @@ package main
 
 import "fmt"
 
-func main() {
+func myName(name string) {
+	fmt.Println("Your name is", name)
+}
 
+func twoTwos() (int, int) {
+	return 2, 2
+}
+
+func addThreeNumer(a, b, c int) int {
+	return a + b + c
+}
+
+func five() int {
+	return 5
+}
+
+func hiThere() string {
+	return "Hi there!"
+}
+func main() {
+	myName("Phiphat")
+	fmt.Println(hiThere())
+
+	a, b := twoTwos()
+
+	answer := addThreeNumer(five(), a, b)
+	fmt.Println(answer)
 }

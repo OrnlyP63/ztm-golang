@@ -37,6 +37,10 @@ const (
 	Guest      = 50
 )
 
+func weekday(day int) bool {
+	return day <= 4
+}
+
 func accessGranted() {
 	fmt.Println("Granted")
 }
@@ -47,7 +51,17 @@ func accessDenied() {
 
 func main() {
 	// The day and role. Change these to check your work.
-	today, role := Tuesday, Guest
+	today, role := Sunday, Contractor
 
-	accessGranted()
+	if role == Admin || role == Manager {
+		accessGranted()
+	} else if role == Contractor && !weekday(today) {
+		accessGranted()
+	} else if role == Member && weekday(today) {
+		accessGranted()
+	} else if role == Guest && (today == Monday || today == Wednesday || today == Friday) {
+		accessGranted()
+	} else {
+		accessDenied()
+	}
 }
